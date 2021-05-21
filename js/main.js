@@ -1,6 +1,6 @@
 $(function () {
     //Nivell 1 exercici 1
-    let name = ['O', 'a', 'O', 'A', 'e', 'O', 'I', 'i'];
+    let name = ['O', 'l', 'i', 'v', 'e', 'r'];
     // for (let index = 0; index < array.length; index++) {
     //     const element = array[index];
     // }
@@ -32,9 +32,17 @@ $(function () {
 
     //iterar todos los valores
     for (const [k, v] of map.entries()) {
-        console.log('KEY ----> ' + k, ' VALUE-----> ' + v)
+        console.log('KEY ----> ' + k, ' VALUE ----> ' + v)
     }
 
+    //Nivell 1 exercici 4
+    let surname = ['A', 'b', 'a', 'd'];
+    let fullName = name;
+    fullName.push(" ");
+    surname.forEach(sn_letter => {
+        fullName.push(sn_letter);
+    })
+    console.log(fullName);
 
 })
 
