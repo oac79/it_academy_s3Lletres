@@ -44,21 +44,89 @@ $(function () {
     })
     console.log(fullName);
 
-})
+    //Nivell 2 exercici 5
+    // var randomNumber = Math.floor(Math.random() * textArray.length);
+    var listEmails = ['oliverabad18@yahoo.es', 'oliwon79@gmail.com', 'oabadch@gmail.com'];
+    var email = 'juanmanuel45@yahoo.es';
+    if (validateEmail(email)) {
+        if (emailExists(email)) {
+            console.log('El email introducido ya existe!');
+        } else {
+            console.log('Crear email ya que el formato es correcto y no ha sido creado previamente.');
+            let emails = createEmail(email);
+            console.log('Lista de emails creados---> ' + emails);
+            console.log('Borramos el email creado---> ');
+            deleteEmail(emails, email);
+            console.log('Lista de emails donde no aparece el elemento creado ya que ha sido borrado----> '+ emails);
+        }
 
-function isVowel(letter) {
-    let letterLower = letter.toLowerCase();
-    if (letterLower == 'a' || letterLower == 'e' || letterLower == 'i' || letterLower == 'o' || letterLower == 'u') {
-        return true;
+    } else {
+        console.log('el email introducido no tienen el formato correcto!');
     }
-    return false;
-}
 
-function isNumeric(letter) {
-    for (let i = 0; i <= 9; i++) {
-        if (letter == i) {
+    function isVowel(letter) {
+        let letterLower = letter.toLowerCase();
+        if (letterLower == 'a' || letterLower == 'e' || letterLower == 'i' || letterLower == 'o' || letterLower == 'u') {
             return true;
         }
+        return false;
     }
-    return false;
-}
+
+    function isNumeric(letter) {
+        for (let i = 0; i <= 9; i++) {
+            if (letter == i) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    function validateEmail(email) {
+        var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if (email.match(mailformat)) {
+            // alert("Valid email address!");
+            return true;
+        }
+        else {
+            // alert("You have entered an invalid email address!");
+            return false;
+        }
+
+    }
+
+    function getAllEmail(listEmails) {
+        listEmails.forEach(email => {
+            console.log(email);
+        })
+    }
+
+    function createEmail(email) {
+        // let listEmails = ['oliverabad18@yahoo.es', 'oliwon79@gmail.com', 'oabadch@gmail.com'];
+        listEmails.push(email);
+        return listEmails;
+    }
+
+    function emailExists(email) {
+        let exist = false;
+        let i = 0;
+        while (i < listEmails.length && exist == false) {
+            if (listEmails[i] == email) {
+                exist = true;
+            }
+            console.log('entra en el while');
+            i++;
+        }
+        return exist
+    }
+
+    function deleteEmail(emails, email) {
+        var index = emails.indexOf(email);
+        console.log('index---> ' + index);
+        if (index > -1) {
+            emails.splice(index, 1);
+        }
+    }
+
+})
+
